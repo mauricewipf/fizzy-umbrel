@@ -28,6 +28,10 @@ class User < ApplicationRecord
     end
   end
 
+  def can_remove?(other)
+    other != self
+  end
+
   private
     def deactived_email_address
       email_address.sub(/@/, "-deactivated-#{SecureRandom.uuid}@")
