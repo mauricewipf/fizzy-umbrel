@@ -1,13 +1,10 @@
 class Bubble < ApplicationRecord
-  include ::Searchable
   include Assignable, Boostable, Colored, Commentable, Eventable, Poppable, Searchable, Taggable, Threaded
 
   belongs_to :bucket
   belongs_to :creator, class_name: "User", default: -> { Current.user }
 
   has_one_attached :image, dependent: :purge_later
-
-  searchable_by :title, using: :bubbles_search_index
 
   before_save :set_default_title
 
