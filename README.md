@@ -203,16 +203,20 @@ Fizzy is released under the [O'Saasy License](LICENSE.md).
 ## Build image
 
 ### Use BuildKit for multi-arch builds
-docker buildx create --use
+
+    docker buildx create --use
 
 ### Helper command: Get all existing tags for image
-curl -s "https://hub.docker.com/v2/repositories/mauricewipf/fizzy/tags/?page_size=100" | jq -r '.results[].name'
 
-docker buildx build \
-  --platform linux/amd64,linux/arm64 \
-  -t mauricewipf/fizzy:latest \
-  -t mauricewipf/fizzy:1.0.0 \
-  -t mauricewipf/fizzy:$(git rev-parse --short HEAD) \
-  --push \
-  --provenance=false \
-  .
+    curl -s "https://hub.docker.com/v2/repositories/mauricewipf/fizzy/tags/?page_size=100" | jq -r '.results[].name'
+
+### Build, tag and push image
+
+    docker buildx build \
+      --platform linux/amd64,linux/arm64 \
+      -t mauricewipf/fizzy:latest \
+      -t mauricewipf/fizzy:1.0.0 \
+      -t mauricewipf/fizzy:$(git rev-parse --short HEAD) \
+      --push \
+      --provenance=false \
+      .
