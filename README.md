@@ -227,11 +227,10 @@ Fizzy is released under the [O'Saasy License](LICENSE.md).
     git pull upstream/main
     git checkout umbrel
     git merge main
-    git push origin
     # Get all version tags:
     git ls-remote --tags origin 'v*'
     git tag v1.0.x
-    git push origin --tags
+    git push origin --follow-tags
     # publish-image-qemu.yml is running...
 
 Visit URL to see all tagged image versions:
