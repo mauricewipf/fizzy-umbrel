@@ -220,3 +220,19 @@ Fizzy is released under the [O'Saasy License](LICENSE.md).
       --push \
       --provenance=false \
       .
+
+### Build, tag and push image with Github Actions
+
+    git checkout main
+    git pull upstream/main
+    git checkout umbrel
+    git merge main
+    git push origin
+    # Get all version tags:
+    git ls-remote --tags origin 'v*'
+    git tag v1.0.x
+    git push origin --tags
+    # publish-image-qemu.yml is running...
+
+Visit URL to see all tagged image versions:
+https://github.com/mauricewipf/fizzy-umbrel/pkgs/container/fizzy-umbrel/versions
