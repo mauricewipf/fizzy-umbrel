@@ -199,39 +199,3 @@ We welcome contributions! Please read our [style guide](STYLE.md) before submitt
 ## License
 
 Fizzy is released under the [O'Saasy License](LICENSE.md).
-
-## Build image
-
-### Use BuildKit for multi-arch builds
-
-    docker buildx create --use
-
-### Helper command: Get all existing tags for image
-
-    curl -s "https://hub.docker.com/v2/repositories/mauricewipf/fizzy/tags/?page_size=100" | jq -r '.results[].name'
-
-### Build, tag and push image
-
-    docker buildx build \
-      --platform linux/amd64,linux/arm64 \
-      -t mauricewipf/fizzy:latest \
-      -t mauricewipf/fizzy:1.0.0 \
-      -t mauricewipf/fizzy:$(git rev-parse --short HEAD) \
-      --push \
-      --provenance=false \
-      .
-
-### Build, tag and push image with Github Actions
-
-    git checkout main
-    git pull upstream/main
-    git checkout umbrel
-    git merge main
-    # Get all version tags:
-    git ls-remote --tags origin 'v*'
-    git tag v1.0.x
-    git push origin umbrel --tags
-    # publish-image-qemu.yml is running...
-
-Visit URL to see all tagged image versions:
-https://github.com/mauricewipf/fizzy-umbrel/pkgs/container/fizzy-umbrel/versions
