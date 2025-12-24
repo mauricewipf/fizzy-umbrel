@@ -3,10 +3,7 @@ name: Build and publish container image to GHCR
 on:
   push:
     branches:
-      - main
       - umbrel
-    tags:
-      - 'v*'
   workflow_dispatch:
 
 concurrency:
