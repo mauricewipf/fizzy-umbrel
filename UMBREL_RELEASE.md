@@ -23,13 +23,13 @@
 
 ### Build, tag and push image with Github Actions
 
+    git checkout umbrel
     git fetch upstream --tags
     git fetch origin
     git fetch upstream main:main
     git push origin main
     git merge origin/main
     git push origin
-    git push origin umbrel --tags
 
     # Get all version tags:
     git ls-remote --tags --sort=-committerdate origin | head -10
